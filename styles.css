@@ -1,13 +1,11 @@
 :root {
-  --bg: #f4efe7;
-  --paper: rgba(255, 252, 246, 0.78);
-  --panel: rgba(32, 48, 62, 0.9);
-  --text: #1c2430;
-  --muted: #5d6876;
-  --line: rgba(28, 36, 48, 0.12);
-  --accent: #c8643b;
-  --accent-soft: #f0c3a9;
-  --shadow: 0 24px 60px rgba(42, 39, 32, 0.12);
+  --paper: rgba(255, 251, 245, 0.82);
+  --panel: rgba(24, 39, 52, 0.94);
+  --text: #16202a;
+  --muted: #5b6775;
+  --line: rgba(22, 32, 42, 0.12);
+  --accent: #a84d2a;
+  --shadow: 0 28px 70px rgba(30, 28, 24, 0.12);
 }
 
 * {
@@ -20,12 +18,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Outfit", sans-serif;
+  font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(200, 100, 59, 0.18), transparent 30%),
-    radial-gradient(circle at 85% 10%, rgba(29, 78, 137, 0.16), transparent 24%),
-    linear-gradient(180deg, #f8f3eb 0%, #f1ebe2 100%);
+    radial-gradient(circle at top left, rgba(168, 77, 42, 0.18), transparent 28%),
+    radial-gradient(circle at 85% 10%, rgba(36, 87, 132, 0.16), transparent 24%),
+    linear-gradient(180deg, #f8f4ed 0%, #f1ece3 100%);
   min-height: 100vh;
 }
 
@@ -35,8 +33,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(28, 36, 48, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 36, 48, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(22, 32, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 32, 42, 0.03) 1px, transparent 1px);
   background-size: 36px 36px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent 75%);
 }
@@ -69,7 +67,7 @@ body::before {
 
 .brand,
 .eyebrow,
-.project-tag {
+.pub-year {
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -85,15 +83,15 @@ body::before {
 }
 
 .nav-links a,
-.project-card a,
-.contact-links a {
+.contact-links a,
+.profile-card a {
   color: inherit;
   text-decoration: none;
 }
 
 .nav-links a:hover,
-.project-card a:hover,
-.contact-links a:hover {
+.contact-links a:hover,
+.profile-card a:hover {
   color: var(--accent);
 }
 
@@ -106,31 +104,33 @@ body::before {
 
 .hero-copy h1,
 .section-heading h2,
-.project-card h3,
 .timeline-content h3,
-.education-card h3,
+.panel-block h3,
 .profile-card h2 {
-  font-family: "Noto Serif SC", serif;
+  font-family: "Newsreader", serif;
 }
 
 .hero-copy h1 {
   margin: 12px 0 16px;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
   line-height: 1.05;
 }
 
-.hero-copy h1 span {
+.hero-role {
+  font-size: 1.1rem;
   color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 18px;
 }
 
 .hero-text,
 .intro-grid p,
 .timeline-content p,
-.project-card p,
-.education-card p,
 .contact-panel p,
 .profile-card p,
-.profile-card dd {
+.profile-card dd,
+.publication-item p,
+.detail-list li {
   color: var(--muted);
   line-height: 1.7;
 }
@@ -179,8 +179,7 @@ body::before {
   margin: 0;
 }
 
-.hero-highlights li,
-.chips span {
+.hero-highlights li {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.52);
   padding: 10px 14px;
@@ -252,16 +251,16 @@ body::before {
 }
 
 .eyebrow,
-.project-tag {
+.pub-year {
   color: var(--accent);
   font-size: 0.82rem;
 }
 
 .intro-grid,
 .timeline,
-.project-grid,
 .contact-panel,
-.education-card {
+.two-column,
+.publication-list {
   border-top: 1px solid var(--line);
   padding-top: 22px;
 }
@@ -272,15 +271,9 @@ body::before {
   gap: 22px;
 }
 
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .timeline-item {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 24px;
   padding: 18px 0;
 }
@@ -298,19 +291,21 @@ body::before {
 }
 
 .timeline-content h3,
-.project-card h3,
-.education-card h3 {
+.panel-block h3 {
   margin: 0 0 10px;
 }
 
-.project-grid {
+.timeline-content p {
+  margin: 0 0 10px;
+}
+
+.two-column {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.project-card,
-.education-card,
+.panel-block,
 .contact-panel {
   background: rgba(255, 255, 255, 0.52);
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -318,9 +313,41 @@ body::before {
   padding: 22px;
 }
 
-.project-card a,
-.contact-links a {
-  font-weight: 600;
+.detail-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.detail-list li + li {
+  margin-top: 10px;
+}
+
+.detail-list.compact li + li {
+  margin-top: 6px;
+}
+
+.publication-list {
+  display: grid;
+  gap: 14px;
+}
+
+.publication-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.publication-item p,
+.panel-block p {
+  margin: 0;
+}
+
+.pub-year {
+  font-weight: 700;
 }
 
 .contact-links {
@@ -328,6 +355,11 @@ body::before {
   gap: 18px;
   flex-wrap: wrap;
   margin-top: 18px;
+}
+
+.contact-links a,
+.profile-card a {
+  font-weight: 600;
 }
 
 .reveal {
@@ -348,7 +380,7 @@ body::before {
 @media (max-width: 920px) {
   .hero-grid,
   .intro-grid,
-  .project-grid,
+  .two-column,
   .timeline-item {
     grid-template-columns: 1fr;
   }
@@ -376,9 +408,13 @@ body::before {
     font-size: 2.5rem;
   }
 
+  .publication-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .hero-actions,
   .hero-highlights,
-  .chips,
   .contact-links,
   .nav-links {
     gap: 10px;
